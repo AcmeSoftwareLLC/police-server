@@ -8,8 +8,12 @@ without prior written permission from Acme Software LLC.
 For inquiries, contact: legal@acmesoftware.com
 """
 
-from src.api.incident_router import IncidentRouter
-from src.api.officer_router import OfficerRouter
-from src.api.websocket_router import WebsocketRouter
+from pydantic import BaseModel
 
-__all__ = ["IncidentRouter", "OfficerRouter", "WebsocketRouter"]
+
+class OfficerModel(BaseModel):
+    id: str
+    name: str
+    rank: str
+    status: str
+    image_url: str

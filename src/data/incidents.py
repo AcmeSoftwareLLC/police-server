@@ -18,6 +18,7 @@ INCIDENTS: dict[UUID, dict[str, str]] = {
         "status": "Pending",
         "priority": "High",
         "location": "Downtown",
+        "location_coordinates": "40.7128,-74.0060",  # New York City
         "description": "Reported theft at a convenience store.",
         "timestamp": "2024-12-01T12:00:00Z",
     },
@@ -27,6 +28,7 @@ INCIDENTS: dict[UUID, dict[str, str]] = {
         "status": "In Progress",
         "priority": "Medium",
         "location": "Highway 15",
+        "location_coordinates": "34.0522,-118.2437",  # Los Angeles
         "description": "Two-vehicle collision reported.",
         "timestamp": "2024-12-01T13:00:00Z",
     },
@@ -36,6 +38,7 @@ INCIDENTS: dict[UUID, dict[str, str]] = {
         "status": "Resolved",
         "priority": "High",
         "location": "Suburban Apartment Complex",
+        "location_coordinates": "34.0522,-118.2437",  # Los Angeles
         "description": "Fire in the kitchen of an apartment building.",
         "timestamp": "2024-12-01T14:30:00Z",
     },
@@ -45,6 +48,7 @@ INCIDENTS: dict[UUID, dict[str, str]] = {
         "status": "Pending",
         "priority": "Low",
         "location": "City Park",
+        "location_coordinates": "37.7749,-122.4194",  # San Francisco
         "description": "Damaged park benches and graffiti on walls.",
         "timestamp": "2024-12-01T15:00:00Z",
     },
@@ -54,6 +58,7 @@ INCIDENTS: dict[UUID, dict[str, str]] = {
         "status": "In Progress",
         "priority": "Critical",
         "location": "Downtown Bank",
+        "location_coordinates": "40.7128,-74.0060",  # New York City
         "description": "Armed robbery in progress at a local bank.",
         "timestamp": "2024-12-01T16:00:00Z",
     },
@@ -63,6 +68,7 @@ INCIDENTS: dict[UUID, dict[str, str]] = {
         "status": "Pending",
         "priority": "Medium",
         "location": "City Center",
+        "location_coordinates": "41.8781,-87.6298",  # Chicago
         "description": "Driver fled the scene after hitting a pedestrian.",
         "timestamp": "2024-12-01T17:30:00Z",
     },
@@ -72,6 +78,7 @@ INCIDENTS: dict[UUID, dict[str, str]] = {
         "status": "Pending",
         "priority": "High",
         "location": "Greenwood High School",
+        "location_coordinates": "40.7608,-111.8910",  # Salt Lake City
         "description": "Teenager reported missing after school hours.",
         "timestamp": "2024-12-01T18:00:00Z",
     },
@@ -81,6 +88,7 @@ INCIDENTS: dict[UUID, dict[str, str]] = {
         "status": "Resolved",
         "priority": "High",
         "location": "Industrial District",
+        "location_coordinates": "36.1627,-86.7816",  # Nashville
         "description": "Gas explosion at a chemical plant, several casualties.",
         "timestamp": "2024-12-02T10:00:00Z",
     },
@@ -90,6 +98,7 @@ INCIDENTS: dict[UUID, dict[str, str]] = {
         "status": "In Progress",
         "priority": "High",
         "location": "Riverbank Road",
+        "location_coordinates": "29.7604,-95.3698",  # Houston
         "description": "Flash flood affecting nearby homes.",
         "timestamp": "2024-12-02T11:00:00Z",
     },
@@ -99,6 +108,7 @@ INCIDENTS: dict[UUID, dict[str, str]] = {
         "status": "Pending",
         "priority": "Medium",
         "location": "Main Street Warehouse",
+        "location_coordinates": "34.0522,-118.2437",  # Los Angeles
         "description": "Hazardous chemical spill in a warehouse.",
         "timestamp": "2024-12-02T12:00:00Z",
     },
@@ -108,6 +118,7 @@ INCIDENTS: dict[UUID, dict[str, str]] = {
         "status": "In Progress",
         "priority": "Low",
         "location": "Residential Area",
+        "location_coordinates": "37.7749,-122.4194",  # San Francisco
         "description": "Ongoing dispute between neighbors.",
         "timestamp": "2024-12-02T13:00:00Z",
     },
@@ -117,6 +128,7 @@ INCIDENTS: dict[UUID, dict[str, str]] = {
         "status": "Pending",
         "priority": "Medium",
         "location": "Greenwood Mall",
+        "location_coordinates": "40.7608,-111.8910",  # Salt Lake City
         "description": "Break-in at a shopping mall after hours.",
         "timestamp": "2024-12-02T14:30:00Z",
     },
@@ -126,25 +138,18 @@ INCIDENTS: dict[UUID, dict[str, str]] = {
         "status": "Resolved",
         "priority": "Critical",
         "location": "Downtown City Square",
+        "location_coordinates": "40.7128,-74.0060",  # New York City
         "description": "Explosion and gunfire in a crowded area.",
         "timestamp": "2024-12-02T15:30:00Z",
     },
     UUID("d7e87c5d-3c3f-40a5-bb9b-f2f460e79924"): {
         "id": "d7e87c5d-3c3f-40a5-bb9b-f2f460e79924",
-        "type": "Arson",
-        "status": "In Progress",
-        "priority": "High",
-        "location": "Riverside Warehouse",
-        "description": "Suspicious fire set at an abandoned warehouse.",
-        "timestamp": "2024-12-02T16:00:00Z",
-    },
-    UUID("2e9dfe8e-e241-4e59-92da-bf101505ca96"): {
-        "id": "2e9dfe8e-e241-4e59-92da-bf101505ca96",
-        "type": "Stabbing",
+        "type": "Shooting",
         "status": "Pending",
         "priority": "Critical",
-        "location": "Downtown Club",
-        "description": "Fatal stabbing inside a nightclub.",
-        "timestamp": "2024-12-02T17:00:00Z",
+        "location": "Downtown Bar",
+        "location_coordinates": "39.7392,-104.9903",  # Denver
+        "description": "Active shooter situation in a downtown bar.",
+        "timestamp": "2024-12-02T16:00:00Z",
     },
 }

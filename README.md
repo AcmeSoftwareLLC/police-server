@@ -2,7 +2,7 @@
 
 ## Run the server
 ```
-docker run -p 1234:8000 ghcr.io/acmesoftwarellc/police-server:0.0.1
+docker run -p 1234:8000 ghcr.io/acmesoftwarellc/police-server:1.0.0
 ```
 
 ## Authorization

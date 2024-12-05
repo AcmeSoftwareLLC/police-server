@@ -8,6 +8,7 @@ without prior written permission from Acme Software LLC.
 For inquiries, contact: legal@acmesoftware.com
 """
 
+from uuid import UUID
 from pydantic import BaseModel
 
 
@@ -17,5 +18,7 @@ class IncidentModel(BaseModel):
     status: str
     priority: str
     location: str
+    location_coordinates: str
     description: str
     timestamp: str
+    assignee: UUID | None = None

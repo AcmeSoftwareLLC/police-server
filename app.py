@@ -11,7 +11,7 @@ For inquiries, contact: legal@acmesoftware.com
 from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from src.api import IncidentRouter, WebsocketRouter
+from src.api import IncidentRouter, OfficerRouter, WebsocketRouter
 from src.utils.api_exception import APIException
 from src.utils.auth_bearer import AuthBearer
 
@@ -35,6 +35,11 @@ def create_app() -> FastAPI:
 
     app.include_router(
         IncidentRouter,
+        prefix="/api/v1",
+        dependencies=[Depends(AuthBearer())],
+    )
+    app.include_router(
+        OfficerRouter,
         prefix="/api/v1",
         dependencies=[Depends(AuthBearer())],
     )

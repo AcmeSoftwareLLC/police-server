@@ -12,11 +12,13 @@ from uuid import UUID
 from fastapi import APIRouter
 
 from src.data.incidents import INCIDENTS
+from src.data.officers import OFFICERS
 from src.models.incident_model import IncidentModel
 from src.models.message_model import MessageModel
+from src.models.officer_model import OfficerModel
 from src.utils.api_exception import APIException
 
-IncidentRouter = APIRouter(prefix="/incidents")
+IncidentRouter = APIRouter(prefix="/incidents", tags=["Incidents"])
 
 
 @IncidentRouter.get("")
@@ -40,16 +42,26 @@ async def get_incident(incident_id: UUID) -> IncidentModel:
 
 
 @IncidentRouter.post("/{incident_id}/assign")
-async def assign_officer(incident_id: UUID, officer_name: str) -> MessageModel:
+async def assign_officer(incident_id: UUID, officer_id: UUID) -> MessageModel:
     """
     Assigns an officer to an incident.
+
+    Note: The officer will be assigned temporarily until the server restarts.
     """
     incident = INCIDENTS.get(incident_id)
     if incident:
         if incident["status"] != "In Progress":
             incident["status"] = "In Progress"
-            return MessageModel(message=f"{officer_name} assigned to incident.")
 
-        return MessageModel(message="Incident already in progress.")
-
+            raw_officer = OFFICERS[officer_id]
+            if raw_officer:
+                officer = OfficerModel.model_validate(raw_officer)
+                if officer.status == "available":
+                    incident["assignee"] = officer.id
+                    return MessageModel(
+                        message=f"{officer.name} assigned to the incident."
+                    )
+                raise APIException("Officer is not available!")
+            raise APIException("Officer not found!")
+        raise APIException("Incident already in progress.")
     raise APIException("Incident not found!")
