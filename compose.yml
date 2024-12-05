@@ -1,0 +1,12 @@
+name: acmesoftware
+
+services:
+  police-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: police-server
+    container_name: police-server
+    ports:
+      - 1234:8000
+    restart: unless-stopped
