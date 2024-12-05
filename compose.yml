@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: police-server
+    image: ghcr.io/acmesoftware/police-server:latest
     container_name: police-server
     ports:
       - 1234:8000
