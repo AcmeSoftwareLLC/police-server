@@ -13,7 +13,7 @@ TOKEN = SHA256 hash of "acmesoftwarellc".
 ```
 
 ### REST API Endpoints
-Access the server docs at http://localhost:8000/docs
+Access the server docs at http://localhost:1234/docs
 
 ### WebSocket Endpoint
-http://localhost:8000/ws/incidents
+http://localhost:1234/ws/incidents
