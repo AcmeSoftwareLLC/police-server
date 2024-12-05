@@ -9,8 +9,14 @@ class AuthBearer(HTTPBearer):
     def __init__(self):
         super().__init__()
 
-    async def __call__(self, request: Request):
+    def __call__(self, request: Request):
         authorization = request.headers.get("Authorization")
+        self.validate_auth(authorization)
+
+        return super().__call__(request)
+
+    @staticmethod
+    def validate_auth(authorization: str | None) -> None:
         if not authorization:
             raise APIException(
                 "Oops! We couldn't find your authentication token. Please make sure to include it in the request.",
@@ -23,13 +29,8 @@ class AuthBearer(HTTPBearer):
                 "Hmm, there seems to be an issue with the format of your token. Please ensure it's in the form of 'Bearer <token>'.",
             )
 
-        if not self.validate_token(token):
+        if token != sha256("acmesoftwarellc".encode()).hexdigest():
             raise APIException(
                 "Something went wrong! The provided token is not valid. Please check and try again.",
                 status.HTTP_401_UNAUTHORIZED,
             )
-
-        return await super().__call__(request)
-
-    def validate_token(self, token: str):
-        return token == sha256("acmesoftwarellc".encode()).hexdigest()

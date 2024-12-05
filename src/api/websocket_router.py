@@ -15,6 +15,7 @@ from fastapi import APIRouter, WebSocket, WebSocketDisconnect
 from src.data.incidents import INCIDENTS
 from src.models.incident_model import IncidentModel
 from src.models.socket_message_model import SocketMessageModel
+from src.utils.auth_bearer import AuthBearer
 from src.utils.connection_manager import ConnectionManager
 
 
@@ -28,6 +29,8 @@ async def track_incident_updates(websocket: WebSocket):
     """
     WebSocket endpoint to broadcast incident updates.
     """
+    AuthBearer.validate_auth(websocket.headers.get("Authorization"))
+
     await manager.connect(websocket)
     try:
         while True:

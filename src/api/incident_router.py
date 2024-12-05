@@ -24,7 +24,7 @@ async def get_incidents() -> list[IncidentModel]:
     """
     Fetches a list of incidents.
     """
-    return [IncidentModel.model_validate(incident) for incident in INCIDENTS]
+    return [IncidentModel.model_validate(incident) for incident in INCIDENTS.values()]
 
 
 @IncidentRouter.get("/{incident_id}")

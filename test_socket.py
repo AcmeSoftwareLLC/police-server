@@ -1,18 +1,20 @@
-import asyncio
-import websockets
+from asyncio import run
+from websockets import connect
 
 
 async def test_websocket():
     uri = "ws://localhost:8000/ws/incidents"
+    headers = {"Authorization": "Bearer test"}
 
-    async with websockets.connect(uri) as websocket:
-        print("Connected to WebSocket server")
+    try:
+        async with connect(uri, additional_headers=headers) as websocket:
+            print("Connected to WebSocket server")
 
-        while True:
-            message = await websocket.recv()
-            print(f"Received message: {message}")
+            while True:
+                message = await websocket.recv()
+                print(f"Incident: {message}")
+    except Exception as e:
+        print(e)
 
 
-loop = asyncio.new_event_loop()
-asyncio.set_event_loop(loop)
-loop.run_until_complete(test_websocket())
+run(test_websocket())
