@@ -51,13 +51,13 @@ async def assign_officer(incident_id: UUID, officer_id: UUID) -> MessageModel:
     incident = INCIDENTS.get(incident_id)
     if incident:
         if incident["status"] != "In Progress":
-            incident["status"] = "In Progress"
-
             raw_officer = OFFICERS[officer_id]
             if raw_officer:
                 officer = OfficerModel.model_validate(raw_officer)
                 if officer.status == "available":
                     incident["assignee"] = officer.id
+                    incident["status"] = "In Progress"
+
                     return MessageModel(
                         message=f"{officer.name} assigned to the incident."
                     )
