@@ -16,4 +16,4 @@ TOKEN = SHA256 hash of "acmesoftwarellc".
 Access the server docs at http://localhost:1234/docs
 
 ### WebSocket Endpoint
-http://localhost:1234/ws/incidents
+ws://localhost:1234/ws/incidents
