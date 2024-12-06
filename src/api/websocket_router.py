@@ -25,11 +25,13 @@ manager = ConnectionManager()
 
 
 @WebsocketRouter.websocket("/incidents")
-async def track_incident_updates(websocket: WebSocket):
+async def track_incident_updates(websocket: WebSocket, token: str | None = None):
     """
     WebSocket endpoint to broadcast incident updates.
     """
-    AuthBearer.validate_auth(websocket.headers.get("Authorization"))
+    AuthBearer.validate_auth(
+        websocket.headers.get("Authorization", default=f"bearer {token}")
+    )
 
     await manager.connect(websocket)
     try:

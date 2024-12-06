@@ -16,4 +16,8 @@ TOKEN = SHA256 hash of "acmesoftwarellc".
 Access the server docs at http://localhost:1234/docs
 
 ### WebSocket Endpoint
-ws://localhost:1234/ws/incidents
+```ws://localhost:1234/ws/incidents```
+
+> [!NOTE]  
+For web, headers are not supported in WebSocket connections. Use `token` query parameter for authentication.
+```ws://localhost:1234/ws/incidents?token=$TOKEN```
